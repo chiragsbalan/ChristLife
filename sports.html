@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sports Selection Form</title>
+<style>
+  body {
+    background-color: #f0f5f9; 
+    color: #333; 
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+
+  .main-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 40px;
+    height: 100vh;
+  }
+
+  .main-body form {
+    border: 2px solid #0077cc; 
+    border-radius: 15px;
+    padding: 50px;
+    max-width: 800px;
+    width: 90%;
+    background-color: #ffffff; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .main-body form label {
+    font-size: larger;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .main-body form input[type="text"],
+  .main-body form input[type="submit"],
+  .main-body form select,
+  .main-body form input[type="radio"] {
+    border: 0;
+    background-color: #f0f5f9; 
+    color: #333; 
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .main-body form input[type="submit"] {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: #0077cc; 
+    color: white;
+  }
+
+  .main-body form input[type="submit"]:hover {
+    background-color: #005faa; 
+  }
+
+  .main-body form select {
+    appearance: none;
+  }
+
+  form .gender-options {
+    display: flex;
+    margin-bottom: 10px;
+  }
+
+  .gender-options label {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: smaller; 
+  }
+
+  .image-body {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+    height: 100vh; 
+    position: relative;
+    overflow: hidden; 
+  }
+
+  .image-body img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #image-1 {
+    grid-column: 1 / span 8;
+    grid-row: 1 / span 8;
+    z-index: 1;
+  }
+
+  #image-2 {
+    grid-column: 5 / span 8;
+    grid-row: 5 / span 8;
+    z-index: 2;
+  }
+
+  #image-3 {
+    grid-column: -8 / span 8;
+    grid-row: -8 / span 8;
+    z-index: 3;
+  }
+
+  .link-container {
+    grid-column: 2 / span 7;
+    grid-row: 14 / span 2;
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .link-container a {
+    color: #0077cc;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 48px;
+    transition-duration: 0.15s;
+  }
+
+  .link-container a:hover{
+    color: #024c81;
+  }
+
+  .text-container{
+    grid-column: 11 / span 16;
+    grid-row: 2 / span 4;
+    z-index: 4;
+  }
+
+  .text-container h2{
+    color: #0077cc;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 48px;
+  }
+
+</style>
+</head>
+<body>
+  
+  <div class="image-body">
+    <div class="text-container">
+      <h2>Sports At Christ</h2>
+    </div>
+    <img src="./assets/images/sports/ground.jpg" id="image-1">
+    <img src="./assets/images/sports/basketball.jpg" id="image-2">
+    <img src="./assets/images/sports/football.jpg" id="image-3">
+    <div class="link-container">
+      <a href="#main-body">Click Here To Register</a>
+    </div>  
+  </div>
+<div class="main-body" id="main-body">
+  <h1>Register For A Sports Event</h1>
+  <form action="./sports.php" method="post" onsubmit="return validateForm()">
+    <label for="class">Class:</label>
+    <select id="class" name="class" required>
+      <option value="" disabled selected>Select Class</option>
+      <option value="2 bca a">2 BCA A</option>
+      <option value="2 bca b">2 BCA B</option>
+      <option value="4 bca a">4 BCA A</option>
+      <option value="4 bca b">4 BCA B</option>
+      <option value="6 bca a">6 BCA A</option>
+      <option value="6 bca b">6 BCA B</option>
+      <option value="3 mca a">3 MCA A</option>
+      <option value="6 mca a">6 MCA A</option>
+      <option value="6 mca b">6 MCA B</option>
+    </select>
+    
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+    
+    <label for="reg_number">Register Number:</label>
+    <input type="text" id="reg_number" name="reg_number" placeholder="Enter your register number" required>
+    
+    <label for="sports">Sports:</label>
+    <select id="sports" name="sports" required>
+      <option value="" disabled selected>Select Sport</option>
+      <option value="football">Football</option>
+      <option value="basketball">Basketball</option>
+      <option value="volleyball">Volleyball</option>
+      <option value="tennis">Tennis</option>
+    </select>
+    
+    <div class="gender-options">
+      <label>Gender:</label>
+      <input type="radio" name="gender" value="male" required> Male
+      <input type="radio" name="gender" value="female" required> Female
+      <input type="radio" name="gender" value="other" required> Other
+    </div>
+    
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+<script>
+  function validateForm() {
+    var classSelect = document.getElementById("class");
+    var nameInput = document.getElementById("name");
+    var regNumberInput = document.getElementById("reg_number");
+    var sportsSelect = document.getElementById("sports");
+    var genderInputs = document.querySelectorAll('input[name="gender"]');
+    
+    if (classSelect.value === "" || nameInput.value === "" || regNumberInput.value === "" || sportsSelect.value === "") {
+      alert("Please fill out all fields");
+      return false;
+    }
+    
+    var genderSelected = false;
+    genderInputs.forEach(function(input) {
+      if (input.checked) {
+        genderSelected = true;
+      }
+    });
+    if (!genderSelected) {
+      alert("Please select a gender");
+      return false;
+    }
+    return true;
+  }
+</script>
+
+</body>
+</html>

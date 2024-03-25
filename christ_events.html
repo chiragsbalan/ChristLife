@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Christ University Events</title>
+  <style>
+    body {
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      position: relative;
+      height: 250px; 
+      overflow: hidden;
+      color: white;
+      text-align: center;
+    }
+    header img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.8; 
+      z-index: -1;
+    }
+    h1 {
+      margin-top: 0;
+      padding-top: 50px; 
+    }
+
+    .heading {
+      text-align: center;
+    }
+
+    .events-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); 
+      gap: 20px; 
+      padding: 20px;
+      justify-content: center; 
+    }
+
+    .event {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center; 
+    }
+
+    .event img {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      border-radius: 10px 10px 0 0; 
+    }
+
+    .event-content {
+      padding: 15px;
+      flex-grow: 1; 
+      width: 100%;
+      text-align: center; 
+    }
+
+    .event h2 {
+      margin-top: 0;
+    }
+
+    .form-container {
+      text-align: center;
+      padding: 20px;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+
+  <script>
+      function ValidateForm() {
+      const registerNumber = form.elements["registerNumber"].value;
+        const name = form.elements["name"].value;
+        const email = form.elements["email"].value;
+        const campus = form.elements["campus"].value;
+        const events = form.elements["events"].value;
+  
+        if (!registerNumber || !name || !email || !campus || !events) {
+          alert("All fields are required.");
+          return false;
+        }
+  
+        if (email == "") {
+          alert("Email is required");
+          return false;
+        } 
+        else if (!/\S+@\S+\.\S+/.test(email)) {
+          alert("Invalid email address");
+          return false;
+        }
+
+        if((registerNumber.length != 8) || (! isNaN(registerNumber))){
+          alert("Invalid Register Number Format");
+          return false;
+        }
+
+        return true;
+    }
+  </script>
+</head>
+<body>
+
+<header>
+  <img src="./assets/images/events/bg_img.jpg" alt="Header Image">
+</header>
+
+<div class="heading">
+  <h1>EVENTS</h1>
+</div>
+
+<div class="events-container">
+  <div class="event">
+    <img src="./assets/images/events/blossoms.jpg" alt="Event Image 1">
+    <div class="event-content">
+      <h2>BLOSSOMS</h2>
+    </div>
+  </div>
+
+  <div class="event">
+    <img src="./assets/images/events/inbloom.jpg" alt="Event Image 2">
+    <div class="event-content">
+      <h2>IN-BLOOM</h2>
+    </div>
+  </div>
+
+  <div class="event">
+    <img src="./assets/images/events/darpan.jpg" alt="Event Image 3">
+    <div class="event-content">
+      <h2>DARPAN</h2>
+    </div>
+  </div>
+
+  <div class="event">
+    <img src="./assets/images/events/bhasa_utsav.jpg" alt="Event Image 4">
+    <div class="event-content">
+      <h2>BASHA UTSAV</h2>
+    </div>
+  </div>
+</div>
+
+<div class="form-container">
+  <h2>Register for Events</h2>
+  <form action="./events.php" method="post">
+    <input type="text" placeholder="Your Register Number" required name="registerNumber">
+    <input type="text" placeholder="Your Name" required name="name">
+    <input type="email" placeholder="Your Email" required name="email">
+    <input type="text" placeholder="Your Campus" required name="campus">
+    <input type="text" placeholder="Your Event" required name="events" >
+    <input type="submit" value="Register">
+  </form>
+</div>
+
+</body>
+</html>

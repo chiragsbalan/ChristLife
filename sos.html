@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Christ University</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9; /* Light Gray */
+      overflow-y: hidden;
+      margin-top: -120px;
+    }
+
+    .top-section {
+      background-image: url("./bg.jpeg");
+      background-size: cover;
+      background-position: top center;
+      color: #fff;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .top-content h1 {
+      font-size: 3em;
+      color: #000;
+    }
+
+
+    section {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .farm-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 150px; /* Adjusted margin for footer */
+    }
+
+    .farm-image {
+      position: relative;
+      cursor: pointer;
+      height: 300px; /* Set a fixed height for all farm images */
+      overflow: hidden; /* Hide overflowing content */
+    }
+
+    .farm-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Maintain image aspect ratio and cover the entire container */
+    }
+
+    .highlight {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.3);
+      border: 2px solid #3498db;
+      pointer-events: none;
+      display: none;
+    }
+
+    .popup {
+      position: absolute;
+      background-color: #fff; /* Default color */
+      color: #333;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      display: none;
+      z-index: 1;
+    }
+
+    .popup-content {
+      margin: 0;
+      color: black; /* Text color for popups */
+    }
+
+
+    .footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .icon {
+      margin: 0 5px;
+    }
+
+    .icon img {
+      width: 30px;
+      height: 30px;
+    }
+    h3{
+        color: #000;
+    }
+
+    section{
+      padding-bottom: -90px;
+    }
+
+    .footer {
+      background-color: #333; /* Example background color */
+      color: #fff; /* Example text color */
+      padding: 10px;
+      text-align: center;
+      /* Stick the footer to the bottom */
+      position: sticky;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="top-section">
+    <div class="top-content">
+      <h1><strong>SCHOOL OF SCIENCES</strong></h1>
+      <h3>School of Sciences at CHRIST University has created a niche in the realm of higher education in India through its programmes. It offers undergraduate, postgraduate, doctoral, and post-doctoral programmes in the disciplines of Chemistry, Physics & Electronics, Mathematics, Life Sciences, and Computer Science & Statistics. Research and publication, even at the undergraduate level, are an integral part of these programmes. The consistent top rankings of many of these programmes by different agencies stand testimony for our credentials.</h3>
+    </div>
+  </section>
+
+
+  <section>
+    <div class="farm-container" style="margin-top: 30px !important;">
+      <div class="farm-image" onclick="showPopup('Department 1', 'Department Name: PERFORMING ARTS<br>Hod: NEHA SINGH<br>Location: AUDI BLOCK', 'popup1', event)">
+        <img src="./assets/images/sos/performing_arts.jpg" alt="dep 1" usemap="#farm1-map">
+        <div class="highlight" style="top: 50px; left: 50px; width: 150px; height: 150px;"></div>
+      </div>
+
+      <div class="farm-image" onclick="showPopup('Department 2', 'Department Name: ASTROPHYSICS<br>Hod: KIRUBANAND V B<br>Location: BLOCK 1', 'popup2', event)">
+        <img src="./assets/images/sos/astrophysics.jpg" alt="dep 2" usemap="#farm2-map">
+        <div class="highlight" style="top: 50px; left: 250px; width: 150px; height: 150px;"></div>
+      </div>
+
+      <div class="farm-image" onclick="showPopup('Department 3', 'Department Name: COMPUTER SCIENCE<br>Hod: SAGAYA AURELIA<br>Location: BLOCK 2', 'popup3', event)">
+        <img src="./assets/images/sos/computer_science.jpg" alt="dep 3" usemap="#farm3-map">
+        <div class="highlight" style="top: 50px; left: 450px; width: 150px; height: 150px;"></div>
+      </div>
+
+      <div class="farm-image" onclick="showPopup('Department 4', 'Department Name: COMMERCE<br>Hod:RESMI KR<br>Location: BLOCK 3', 'popup4', event)">
+        <img src="./assets/images/sos/commerrce.jpg" alt="dep 4" usemap="#farm4-map">
+        <div class="highlight" style="top: 250px; left: 50px; width: 150px; height: 150px;"></div>
+      </div>
+    </section>
+
+  <!-- Popup -->
+  <div class="popup" id="popup1">
+    <p class="popup-content" id="popup-content1"></p>
+    <button onclick="hidePopup('popup1')">Close</button>
+  </div>
+
+  <div class="popup" id="popup2">
+    <p class="popup-content" id="popup-content2"></p>
+    <button onclick="hidePopup('popup2')">Close</button>
+  </div>
+
+  <div class="popup" id="popup3">
+    <p class="popup-content" id="popup-content3"></p>
+    <button onclick="hidePopup('popup3')">Close</button>
+  </div>
+
+  <div class="popup" id="popup4">
+    <p class="popup-content" id="popup-content4"></p>
+    <button onclick="hidePopup('popup4')">Close</button>
+  </div>
+
+
+  <!-- Footer Section -->
+  <div class="footer">
+      <p>&copy; 2024 Christ University All rights reserved.</p>
+  </div>
+  <script>
+    function showPopup(title, content, popupId, event) {
+      // Hide all popups before showing the new one
+      hideAllPopups();
+
+      // Set popup background color dynamically
+      var popupElement = document.getElementById(popupId);
+      var popupContentElement = document.getElementById("popup-content" + popupId.slice(-1));
+      popupContentElement.innerHTML = content;
+
+      // Get coordinates of the clicked image
+      var rect = event.target.getBoundingClientRect();
+      var top = rect.top + window.scrollY;
+      var left = rect.left + window.scrollX;
+
+      // Set popup position
+      popupElement.style.top = top + 'px';
+      popupElement.style.left = left + 'px';
+
+      // Display the popup
+      popupElement.style.display = 'block';
+    }
+
+    function hidePopup(popupId) {
+      document.getElementById(popupId).style.display = 'none';
+    }
+
+    function hideAllPopups() {
+      // Hide all popups
+      for (var i = 1; i <= 4; i++) {
+        document.getElementById("popup" + i).style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
